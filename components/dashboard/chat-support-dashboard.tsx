@@ -54,6 +54,13 @@ const navigationItems: { icon: LucideIcon; label: string; isActive: boolean }[] 
 ];
 
 export function ChatSupportDashboard() {
+  const todayLabel = new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  }).format(new Date());
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/30">
       <div className="mx-auto grid max-w-7xl gap-5 p-4 md:grid-cols-[280px_1fr] md:p-8">
@@ -106,7 +113,7 @@ export function ChatSupportDashboard() {
           <header className="rounded-2xl border bg-card/80 p-5 shadow-sm backdrop-blur">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-sm text-muted-foreground">Tuesday, March 31, 2026</p>
+                <p className="text-sm text-muted-foreground">{todayLabel}</p>
                 <h2 className="text-2xl font-semibold">Customer Chat Operations</h2>
               </div>
               <div className="flex items-center gap-2">
