@@ -1,4 +1,15 @@
-import { Bell, Clock3, Filter, LayoutGrid, MessageSquare, Search, Send, Star, Users } from "lucide-react";
+import {
+  Bell,
+  Clock3,
+  Filter,
+  LayoutGrid,
+  MessageSquare,
+  Search,
+  Send,
+  Star,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -45,6 +56,14 @@ const team = [
   { name: "Liam", active: false, chats: 0 },
 ];
 
+const navigationItems: { icon: LucideIcon; label: string; isActive: boolean }[] = [
+  { icon: LayoutGrid, label: "Dashboard", isActive: true },
+  { icon: MessageSquare, label: "Conversations", isActive: false },
+  { icon: Users, label: "Customers", isActive: false },
+  { icon: Clock3, label: "SLA Monitor", isActive: false },
+  { icon: Star, label: "Satisfaction", isActive: false },
+];
+
 export function ChatSupportDashboard() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/30">
@@ -61,22 +80,16 @@ export function ChatSupportDashboard() {
           </div>
 
           <nav className="space-y-2 text-sm">
-            {[
-              [LayoutGrid, "Dashboard", true],
-              [MessageSquare, "Conversations", false],
-              [Users, "Customers", false],
-              [Clock3, "SLA Monitor", false],
-              [Star, "Satisfaction", false],
-            ].map(([Icon, label, isActive]) => (
+            {navigationItems.map(({ icon: Icon, label, isActive }) => (
               <button
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left transition ${
                   isActive ? "bg-primary text-primary-foreground" : "hover:bg-secondary"
                 }`}
-                key={label as string}
+                key={label}
                 type="button"
               >
                 <Icon className="h-4 w-4" />
-                <span>{label as string}</span>
+                <span>{label}</span>
               </button>
             ))}
           </nav>
